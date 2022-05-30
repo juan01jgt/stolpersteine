@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <style>
+        .opcion-menu{
+            color: #00C2CA !important; 
+            font-size: 2rem;
+        }
+        .opcion-menu:hover{
+            color: #0e7074 !important; 
+            cursor: pointer;
+        }
+        .active{
+            background-color: #FFCC57;
+        }
+        #map { 
+            height: 84vh;
+        }
+        .leaflet-popup-content-wrapper{
+            background-color: #FFCC57 !important;
+        }
+        .leaflet-popup-tip{
+            background-color: #FFCC57 !important;
+        }
+        .borde{
+            border: 3px solid #00C2CA;
+        }
+        .btncontacto{
+            background-color: #00C2CA !important; 
+            font-size: 2rem;
+        }
+        .mostrardatos:hover{
+            background-color: #b6923e;
+            cursor: pointer;
+        }
+
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <title>Laravel CRUD</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+  </head>
+  <body class="active">
+
+    @yield('content')
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
