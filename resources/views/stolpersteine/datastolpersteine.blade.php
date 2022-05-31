@@ -6,7 +6,7 @@
         
         @if ($stolpersteines)
         <div class="row m-0" data-id_mostrar={{ $stolpersteines->id }}>
-            <div class="col-12"><img src="{{ url('public/fotos/'.$stolpersteines->foto) }}"></div>
+            <div class="col-12"><img src="{{ url('public/fotos/'.$stolpersteines->foto) }}" class="w-100"></div>
             <div class="col-12"><h1><b>{{ $stolpersteines->nombre }}</b></h1><h5>{{ $stolpersteines->localidad }}</h5></div>
             <div class="col-12"><h5>{{ $stolpersteines->f_nacimiento }} - {{ $stolpersteines->f_defuncion }}</h5></div>
             <hr>
