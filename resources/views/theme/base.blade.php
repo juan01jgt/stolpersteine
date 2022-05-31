@@ -14,7 +14,7 @@
             background-color: #FFCC57;
         }
         #map { 
-            height: 84vh;
+            height: 81vh;
         }
         .leaflet-popup-content-wrapper{
             background-color: #FFCC57 !important;

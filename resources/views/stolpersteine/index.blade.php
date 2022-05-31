@@ -18,8 +18,6 @@
                 <th>Lugar de nacimiento</th>
                 <th>Fecha de nacimiento</th>
                 <th>Fecha de defuncion</th>
-                <th>Biografia</th>
-                <th>Deportacion</th>
                 <th>Foto</th>
                 <th>Acciones</th>
             </thead>
@@ -30,8 +28,6 @@
                         <td>{{ $stolpersteine->localidad }}</td>
                         <td>{{ $stolpersteine->f_nacimiento }}</td>
                         <td>{{ $stolpersteine->f_defuncion }}</td>
-                        <td>{{ $stolpersteine->biografia }}</td>
-                        <td>{{ $stolpersteine->Descripcion }}</td>
                         <td><img src="{{ url('public/fotos/'.$stolpersteine->foto) }}" style="height: 100px;"></td>
                         <td>
                             <a href="{{ route('stolpersteine.edit', $stolpersteine) }}" class="btn btn-warning">Editar</a>

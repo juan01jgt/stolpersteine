@@ -22,6 +22,8 @@ return new class extends Migration
             $table->longText('biografia');
             $table->longText('Descripcion');
             $table->string('foto')->nullable();
+            $table->decimal('lat', 18, 15);
+            $table->decimal('lon', 18, 15);
             $table->timestamps();
         });
     }

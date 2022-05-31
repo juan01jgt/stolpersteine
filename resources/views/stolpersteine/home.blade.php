@@ -1,8 +1,9 @@
 @extends('theme.base')
 
 @section('content')
-<div id="map"></div>
+    <div class="row no-gutters fixed top"><div id="map"></div></div>
     <div class="container text-center">
+        <div class="row no-gutters "><i class="bi bi-caret-up-fill opcion-menu"></i></div>
         <form class="d-flex input-group w-auto">
             <input type="search" class="form-control rounded" placeholder="Buscar" aria-label="search" aria-describedby="search-addon"/>
         </form>
@@ -56,7 +57,7 @@
         }).addTo(map);
 
         @forelse ($stolpersteines as $stolpersteine)
-        L.marker([37.890056, -4.778513],{icon: myIcon})
+        L.marker([{{$stolpersteine->lat}}, {{$stolpersteine->lon}}],{icon: myIcon})
             .bindPopup('<div class="row no-gutters"><div class="col-4"><img src="{{ url("public/fotos/".$stolpersteine->foto) }}" style="height: 100px;"></div><div class="col-8"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div></div>')
             .openPopup()
             .addTo(map);

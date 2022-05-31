@@ -62,17 +62,19 @@ class StolpersteineController extends Controller
      */
     public function store(Request $request)
     {
-        
+     
         $request->validate([
             'nombre' => 'required',
             'localidad' => 'required',
             'f_nacimiento' => 'required',
             'f_defuncion' => 'required',
             'biografia' => 'required',
-            'Descripcion' => 'required'
+            'Descripcion' => 'required',
+            'lat' => 'required',
+            'lon' => 'required'
         ]);
 
-        $data = $request->only('nombre','localidad','f_nacimiento','f_defuncion','biografia','Descripcion','foto');
+        $data = $request->only('nombre','localidad','f_nacimiento','f_defuncion','biografia','Descripcion','foto','lat','lon');
         if($request->file('foto')){
             $file= $request->file('foto');
             $filename= date('YmdHi').$file->getClientOriginalName();
@@ -130,7 +132,9 @@ class StolpersteineController extends Controller
             'f_nacimiento' => 'required',
             'f_defuncion' => 'required',
             'biografia' => 'required',
-            'Descripcion' => 'required'
+            'Descripcion' => 'required',
+            'lat' => 'required',
+            'lon' => 'required'
         ]);
 
         $stolpersteine->nombre = $request['nombre'];
@@ -140,6 +144,8 @@ class StolpersteineController extends Controller
         $stolpersteine->biografia = $request['biografia'];
         $stolpersteine->Descripcion = $request['Descripcion'];
         $stolpersteine->foto = $request['foto'];
+        $stolpersteine->lat = $request['lat'];
+        $stolpersteine->lon = $request['lon'];
         $stolpersteine->save();
         
         Session::flash('mensaje', 'Stolpersteine editada con exito');

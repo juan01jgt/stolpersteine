@@ -1,7 +1,7 @@
 @extends('theme.base')
 
 @section('content')
-    <div class="container py-5 text-center">
+    <div class="row no-gutters m-3 text-center">
 
         @if (isset($stolpersteine))
             <h1>Editar stolpersteine</h1>
@@ -75,7 +75,19 @@
                 @enderror
             </div>
 
-            <div id="map"></div>
+            <div class="mb-3">
+                <label for="foto" class="form-label"><h4>Ubicacion en el mapa (Utilizar buscador, Ej: 24 quevedo Villanueva de cordoba)</h4></label>
+                <div id="map"></div>
+                <input type="number" id="lat" name="lat" class="form-control" placeholder="Latitud" style="display: none;"> 
+                <input type="number" id="lon" name="lon" class="form-control" placeholder="Longitud" style="display: none;">
+                @error('lat')
+                    <p class="form-text text-danger">{{ $message }}</p>
+                @enderror
+                @error('lon')
+                    <p class="form-text text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            
 
             @if (isset($stolpersteine))
                 <button type="submit" class="btn btn-success">Editar Stolpersteine</button>
@@ -86,25 +98,12 @@
         </form>
     </div>
     <script>
-        var myIcon = L.icon({
-            iconUrl: '/static/images/icons8-marcador-96.png',
-            iconSize: [45, 47],
-            iconAnchor: [23, 47],
-        });
         
         var map = L.map('map').setView([37.890056, -4.778513], 10);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
         maxZoom: 19
         }).addTo(map);
-
-        @forelse ($stolpersteines as $stolpersteine)
-        L.marker([37.890056, -4.778513],{icon: myIcon})
-            .bindPopup('<div class="row no-gutters"><div class="col-4"><img src="{{ url("public/fotos/".$stolpersteine->foto) }}" style="height: 100px;"></div><div class="col-8"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div></div>')
-            .openPopup()
-            .addTo(map);
-        @empty
-        @endforelse
         
         var searchControl = L.esri.Geocoding.geosearch({
             position: 'topright',
@@ -124,7 +123,9 @@
         searchControl.on('results', function (data) {
             results.clearLayers();
             for (var i = data.results.length - 1; i >= 0; i--) {
-            results.addLayer(L.marker(data.results[i].latlng));
+                document.getElementById('lat').setAttribute('value', data.results[i].latlng.lat );
+                document.getElementById('lon').setAttribute('value', data.results[i].latlng.lng );
+                results.addLayer(L.marker(data.results[i].latlng));
             }
         });
         
