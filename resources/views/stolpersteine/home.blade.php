@@ -1,9 +1,9 @@
 @extends('theme.base')
 
 @section('content')
-    <div class="row no-gutters fixed top"><div id="map"></div></div>
+    <div class="row m-0 fixed top"><div id="map"></div></div>
     <div class="container text-center">
-        <div class="row no-gutters "><i class="bi bi-caret-up-fill opcion-menu"></i></div>
+        <div class="row m-0 "><i class="bi bi-caret-up-fill opcion-menu"></i></div>
         <form class="d-flex input-group w-auto">
             <input type="search" class="form-control rounded" placeholder="Buscar" aria-label="search" aria-describedby="search-addon"/>
         </form>
@@ -15,12 +15,12 @@
         @endif
 
         @forelse ($stolpersteines as $stolpersteine)
-        <div class="row no-gutters mostrardatos" data-id_mostrar={{ $stolpersteine->id }}>
+        <div class="row m-0" data-id_mostrar={{ $stolpersteine->id }} id="mostrardatos">
             <div class="col-4"><img src="{{ url('public/fotos/'.$stolpersteine->foto) }}" style="height: 100px;"></div>
             <div class="col-8"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div>
         </div>
         @empty
-        <div class="row no-gutters">
+        <div class="row m-0">
             <h1>No hay registros</h1>
         </div>
         @endforelse
@@ -86,5 +86,34 @@
             }
         });
         
+        map.locate({
+                setView: true,
+                enableHighAccuracy: true,
+            })
+            .on("locationfound", (e) => {
+                console.log(e);
+                const marker = L.marker([e.latitude, e.longitude]).bindPopup(
+                "Estas aqui"
+                );
+                
+                const circle = L.circle([e.latitude, e.longitude], e.accuracy / 2, {
+                weight: 2,
+                color: "red",
+                fillColor: "red",
+                fillOpacity: 0.1,
+                });
+
+                map.addLayer(marker);
+                map.addLayer(circle);
+            })
+            .on("locationerror", (e) => {
+                console.log(e);
+                alert("Permiso de ubicación denegado");
+            });
+    </script>
+    <script>
+        document.getElementById("mostrardatos").addEventListener("click", function(){
+            window.location.href = "datastolpersteine/"+this.getAttribute('data-id_mostrar');
+        });
     </script>
 @endsection

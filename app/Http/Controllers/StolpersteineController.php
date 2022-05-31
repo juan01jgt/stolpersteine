@@ -43,6 +43,12 @@ class StolpersteineController extends Controller
         return view('stolpersteine.contact')
             ->with('stolpersteines',$stolpersteines);
     }
+    public function datastolpersteine($id)
+    {
+        $stolpersteines = Stolpersteine::find($id);
+        return view('stolpersteine.datastolpersteine')
+            ->with('stolpersteines',$stolpersteines);
+    }
 
     /**
      * Show the form for creating a new resource.

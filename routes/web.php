@@ -22,3 +22,4 @@ Route::resource('stolpersteine', StolpersteineController::class);
 Route::get('home', [StolpersteineController::class, 'home']);
 Route::get('info', [StolpersteineController::class, 'info']);
 Route::get('contact', [StolpersteineController::class, 'contact']);
+Route::get('datastolpersteine/{id}', [StolpersteineController::class, 'datastolpersteine']);
