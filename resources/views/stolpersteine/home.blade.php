@@ -63,6 +63,27 @@
         @empty
         @endforelse
         
+        var searchControl = L.esri.Geocoding.geosearch({
+            position: 'topright',
+            placeholder: 'Buscar una direccion',
+            useMapBounds: false,
+            providers: [L.esri.Geocoding.arcgisOnlineProvider({
+            apikey: 'AAPK467b6b686b8541eaa5d2da0f225fee12L5eD559LAvzeQTZLCbdkpAorPBixamqNnYSfZ73aRUyQcY0PprZAaxqEtSqeD-E1', // replace with your api key - https://developers.arcgis.com
+            nearby: {
+                lat: -33.8688,
+                lng: 151.2093
+            }
+            })]
+        }).addTo(map);
+
+        var results = L.layerGroup().addTo(map);
+
+        searchControl.on('results', function (data) {
+            results.clearLayers();
+            for (var i = data.results.length - 1; i >= 0; i--) {
+            results.addLayer(L.marker(data.results[i].latlng));
+            }
+        });
         
     </script>
 @endsection
