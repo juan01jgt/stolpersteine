@@ -15,7 +15,7 @@
         @endif
 
         @forelse ($stolpersteines as $stolpersteine)
-        <div class="row m-0" data-id_mostrar={{ $stolpersteine->id }} id="mostrardatos">
+        <div class="row m-0 mostrardatos" data-id_mostrar={{ $stolpersteine->id }}>
             <div class="col-4"><img src="{{ url('public/fotos/'.$stolpersteine->foto) }}" style="height: 100px;"></div>
             <div class="col-8"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div>
         </div>
@@ -58,7 +58,7 @@
 
         @forelse ($stolpersteines as $stolpersteine)
         L.marker([{{$stolpersteine->lat}}, {{$stolpersteine->lon}}],{icon: myIcon})
-            .bindPopup('<div class="row no-gutters"><div class="col-4"><img src="{{ url("public/fotos/".$stolpersteine->foto) }}" style="height: 100px;"></div><div class="col-8"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div></div>')
+            .bindPopup('<div class="row no-gutters mostrardatos" onclick="aux({{ $stolpersteine->id }})"><div class="col-4"><img src="{{ url("public/fotos/".$stolpersteine->foto) }}" style="height: 100px;"></div><div class="col-8"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div></div>')
             .openPopup()
             .addTo(map);
         @empty
@@ -112,8 +112,14 @@
             });
     </script>
     <script>
-        document.getElementById("mostrardatos").addEventListener("click", function(){
-            window.location.href = "datastolpersteine/"+this.getAttribute('data-id_mostrar');
+        function aux(idaux){
+            window.location.href = "datastolpersteine/"+idaux;
+        }
+        const datos = document.querySelectorAll('.mostrardatos');
+        datos.forEach(dato => {
+            dato.addEventListener("click", function(){
+                window.location.href = "datastolpersteine/"+this.getAttribute('data-id_mostrar');
+            });
         });
     </script>
 @endsection
