@@ -5,7 +5,7 @@
     <div class="container text-center">
         <div class="row m-0 "><i class="bi bi-caret-up-fill opcion-menu"></i></div>
         <form class="d-flex input-group w-auto">
-            <input type="search" class="form-control rounded" placeholder="Buscar" aria-label="search" aria-describedby="search-addon"/>
+            <input type="search" class="form-control rounded" placeholder="Buscar nombre o localidad" aria-label="search" aria-describedby="search-addon" onkeyup="buscar()" id="buscador"/>
         </form>
 
         @if (Session::has('mensaje'))
@@ -17,7 +17,7 @@
         @forelse ($stolpersteines as $stolpersteine)
         <div class="row m-0 mostrardatos" data-id_mostrar={{ $stolpersteine->id }}>
             <div class="col-4"><img src="{{ url('public/fotos/'.$stolpersteine->foto) }}" style="height: 100px;"></div>
-            <div class="col-8"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div>
+            <div class="col-8 datosbuscador"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div>
         </div>
         @empty
         <div class="row m-0">
@@ -121,5 +121,19 @@
                 window.location.href = "datastolpersteine/"+this.getAttribute('data-id_mostrar');
             });
         });
+
+        function buscar() {
+            var input = document.getElementById("buscador");
+            var filter = input.value.toLowerCase();
+            var nodes = document.getElementsByClassName('datosbuscador');
+
+            for (i = 0; i < nodes.length; i++) {
+                if (nodes[i].innerText.toLowerCase().includes(filter)) {
+                nodes[i].parentNode.style.display = "flex";
+                } else {
+                nodes[i].parentNode.style.display = "none";
+                }
+            }
+        }
     </script>
 @endsection
