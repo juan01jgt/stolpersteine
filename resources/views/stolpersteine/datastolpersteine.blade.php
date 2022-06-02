@@ -2,16 +2,16 @@
 
 @section('content')
 
-    <div class="container text-center">
+    <div class="container">
         
         @if ($stolpersteines)
         <div class="row m-0" data-id_mostrar={{ $stolpersteines->id }}>
-            <div class="col-12"><img src="{{ url('public/fotos/'.$stolpersteines->foto) }}" class="w-100"></div>
-            <div class="col-12"><h1><b>{{ $stolpersteines->nombre }}</b></h1><h5>{{ $stolpersteines->localidad }}</h5></div>
-            <div class="col-12"><h5>{{ $stolpersteines->f_nacimiento }} - {{ $stolpersteines->f_defuncion }}</h5></div>
+            <div class="col-12 text-center"><img src="{{ url('public/fotos/'.$stolpersteines->foto) }}" class="w-100" onload="cargar('{{ $stolpersteines->biografia }}','{{ $stolpersteines->Descripcion }}')"></div>
+            <div class="col-12 text-center"><h1><b>{{ $stolpersteines->nombre }}</b></h1><h5>{{ $stolpersteines->localidad }}</h5></div>
+            <div class="col-12 text-center"><h5>{{ $stolpersteines->f_nacimiento }} - {{ $stolpersteines->f_defuncion }}</h5></div>
             <hr>
-            <div class="col-12 m-1"><p>{{ $stolpersteines->biografia }}</p></div>
-            @if ($imagenes)
+            <div class="col-12 m-1" id="biografia"></div>
+            @if ($imagenes !== null)
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner borde">
                   @forelse ($imagenes as $imagen)
@@ -37,7 +37,7 @@
               @else
                 <hr>
               @endif
-            <div class="col-12 m-1"><p>{{ $stolpersteines->Descripcion }}</p></div>
+            <div class="col-12 m-1" id="Descripcion"></div>
         </div>
         @else
         <div class="row m-0">
@@ -65,4 +65,10 @@
     </nav>
 
     <div style="height: 4rem"></div>
+    <script>
+      function cargar(cadena,cadena2) {
+        document.getElementById('biografia').innerHTML = cadena;
+        document.getElementById('Descripcion').innerHTML = cadena2;
+      }
+    </script>
 @endsection

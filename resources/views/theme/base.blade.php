@@ -62,6 +62,7 @@
     integrity="sha512-mwRt9Y/qhSlNH3VWCNNHrCwquLLU+dTbmMxVud/GcnbXfOKJ35sznUmt3yM39cMlHR2sHbV9ymIpIMDpKg4kKw=="
     crossorigin=""></script>
 
+    <script src="//cdn.ckeditor.com/4.19.0/basic/ckeditor.js"></script>
   </head>
   <body class="active">
 

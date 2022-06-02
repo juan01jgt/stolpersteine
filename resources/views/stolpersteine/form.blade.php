@@ -53,7 +53,7 @@
 
             <div class="mb-3">
                 <label for="biografia" class="form-label"><h4>Biografia del deportado</h4></label>
-                <textarea name="biografia" cols="30" rows="10" class="form-control" placeholder="Introduce la biografia completa del deportado">{{ old('biografia') ?? @$stolpersteine->biografia}}</textarea>
+                <textarea name="biografia" id="biografia" cols="30" rows="10" class="form-control" placeholder="Introduce la biografia completa del deportado">{{ old('biografia') ?? @$stolpersteine->biografia}}</textarea>
                 @error('biografia')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
@@ -61,7 +61,7 @@
 
             <div class="mb-3">
                 <label for="Descripcion" class="form-label"><h4>Descripcion de la deportacion</h4></label>
-                <textarea name="Descripcion" cols="30" rows="10" class="form-control" placeholder="Introduce la informacion completa de la deportacion">{{ old('Descripcion') ?? @$stolpersteine->Descripcion}}</textarea>
+                <textarea name="Descripcion" id="Descripcion" cols="30" rows="10" class="form-control" placeholder="Introduce la informacion completa de la deportacion">{{ old('Descripcion') ?? @$stolpersteine->Descripcion}}</textarea>
                 @error('Descripcion')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
@@ -128,6 +128,9 @@
                 results.addLayer(L.marker(data.results[i].latlng));
             }
         });
+        
+        CKEDITOR.replace( 'biografia' );
+        CKEDITOR.replace( 'Descripcion' );
         
     </script>
 @endsection
