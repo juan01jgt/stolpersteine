@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Stolpersteine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -46,8 +47,10 @@ class StolpersteineController extends Controller
     public function datastolpersteine($id)
     {
         $stolpersteines = Stolpersteine::find($id);
+        $imagenes = Image::whereIn('id_stolpersteine',[$id])->get();
         return view('stolpersteine.datastolpersteine')
-            ->with('stolpersteines',$stolpersteines);
+            ->with('stolpersteines',$stolpersteines)
+            ->with('imagenes',$imagenes);
     }
 
     /**

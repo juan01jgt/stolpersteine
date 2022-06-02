@@ -36,6 +36,7 @@
                                 @csrf
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro de eliminar esta stolpersteine')">Eliminar</button>
                             </form>
+                            <a href="{{ route('image.create', 'id='.$stolpersteine->id) }}" class="btn btn-success">Agregar imagenes relacionadas</a>
                         </td>
                     </tr>
                 @empty

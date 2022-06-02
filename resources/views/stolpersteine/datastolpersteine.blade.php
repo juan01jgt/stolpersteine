@@ -11,17 +11,19 @@
             <div class="col-12"><h5>{{ $stolpersteines->f_nacimiento }} - {{ $stolpersteines->f_defuncion }}</h5></div>
             <hr>
             <div class="col-12 m-1"><p>{{ $stolpersteines->biografia }}</p></div>
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            @if ($imagenes)
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner borde">
-                  <div class="carousel-item active">
-                    <img src="https://elcomercio.pe/resizer/nYAA6vYIqWnVbWOf_wdIIEE8NXs=/980x0/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/5YPIC23UZNFNLIPABRQC462TS4.jpg" class="d-block w-100" alt="...">
+                  @forelse ($imagenes as $imagen)
+                  <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                    <img src="{{ url('public/fotos/'.$imagen->nombre) }}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>{{ $imagen->descripcion }}</h5>
+                    </div>
                   </div>
-                  <div class="carousel-item">
-                    <img src="https://i.blogs.es/aa1b9a/luna-100mpx/450_1000.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7vgEphFdh_YtDrWyxlxH388pjU98Hq23Ri4E4fHf3YLkULjUh7cQapt4ZvAKz8BK918U&usqp=CAU" class="d-block w-100" alt="...">
-                  </div>
+                  @empty
+                    
+                  @endforelse
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -31,7 +33,10 @@
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
-            </div>
+              </div>
+              @else
+                <hr>
+              @endif
             <div class="col-12 m-1"><p>{{ $stolpersteines->Descripcion }}</p></div>
         </div>
         @else
