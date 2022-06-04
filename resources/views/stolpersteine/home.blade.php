@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row m-0 fixed top"><div id="map"></div></div>
-    <div class="container text-center">
+    <div class="container text-center pb-2">
         <div class="row m-0 "><i class="bi bi-caret-up-fill opcion-menu"></i></div>
         <form class="d-flex input-group w-auto">
             <input type="search" class="form-control rounded" placeholder="Buscar nombre o localidad" aria-label="search" aria-describedby="search-addon" onkeyup="buscar()" id="buscador"/>
@@ -15,7 +15,7 @@
         @endif
 
         @forelse ($stolpersteines as $stolpersteine)
-        <div class="row m-0 mostrardatos" data-id_mostrar={{ $stolpersteine->id }}>
+        <div class="row m-0 my-2 p-1 mostrardatos rounded shadow border border-info" data-id_mostrar={{ $stolpersteine->id }}>
             <div class="col-4"><img src="{{ url('public/fotos/'.$stolpersteine->foto) }}" style="height: 100px;"></div>
             <div class="col-8 datosbuscador"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div>
         </div>
