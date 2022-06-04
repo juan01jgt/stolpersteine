@@ -69,7 +69,7 @@
             placeholder: 'Buscar una direccion',
             useMapBounds: false,
             providers: [L.esri.Geocoding.arcgisOnlineProvider({
-            apikey: 'AAPK467b6b686b8541eaa5d2da0f225fee12L5eD559LAvzeQTZLCbdkpAorPBixamqNnYSfZ73aRUyQcY0PprZAaxqEtSqeD-E1', // replace with your api key - https://developers.arcgis.com
+            apikey: 'AAPK467b6b686b8541eaa5d2da0f225fee12L5eD559LAvzeQTZLCbdkpAorPBixamqNnYSfZ73aRUyQcY0PprZAaxqEtSqeD-E1',
             nearby: {
                 lat: -33.8688,
                 lng: 151.2093
@@ -86,11 +86,18 @@
             }
         });
         
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
         map.locate({
                 setView: true,
                 enableHighAccuracy: true,
             })
             .on("locationfound", (e) => {
+                if(urlParams.get('latitude') !== null && urlParams.get('longitude') !== null){
+                    e.latitude=urlParams.get('latitude');
+                    e.longitude=urlParams.get('longitude');
+                }
                 console.log(e);
                 const marker = L.marker([e.latitude, e.longitude]).bindPopup(
                 "Estas aqui"
@@ -107,8 +114,7 @@
                 map.addLayer(circle);
             })
             .on("locationerror", (e) => {
-                console.log(e);
-                alert("Permiso de ubicación denegado");
+
             });
     </script>
     <script>
