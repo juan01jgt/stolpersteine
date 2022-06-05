@@ -22,7 +22,15 @@
                 <li><b>Promocionar</b> ante las diferentes Administraciones Públicas de todo tipo de actividades encaminadas a la consecución de los fines de la Asociación.</li>
                 <li>Y en general, llevar a cabo todas aquellas actividades encaminadas a la consecución de sus fines.</li>
             </ul>
-            <a href="https://drive.google.com/file/d/1l747kJkkJ6lehmuHTrxB_E_RcxbccRT7/view?usp=sharing"><h3>Leer Mas...</h3></a>
+            <div class="row g-0 m-0 p-0">
+                <div class="col-6">
+                    <a href="https://drive.google.com/file/d/1l747kJkkJ6lehmuHTrxB_E_RcxbccRT7/view?usp=sharing" onclick="mostrarcarga()"><h3>Leer Mas...</h3></a>
+                </div>
+                <div class="col-6">
+                    <div class="spinner-border text-primary" role="status" id="simbolocarga" style="display: none">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -41,4 +49,8 @@
     </nav>
 
     <div style="height: 4rem"></div>
+
+    <script>
+        function mostrarcarga() {document.getElementById('simbolocarga').style.display = 'block';}
+    </script>
 @endsection
