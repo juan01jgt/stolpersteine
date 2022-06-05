@@ -7,11 +7,11 @@
     </div>
     <div class="row justify-content-center w-100 g-0 m-0 p-0">
         <div class="col-2 text-end py-3 px-2"><i class="bi bi-phone opcion-menu"></i></div>
-        <div class="col-10 py-3 px-2 d-flex align-items-center"><button class="btn btn-large btncontacto"><a href="tel:+34 123 456 789" class="text-decoration-none">+34 123 456 789</a></button></div>
+        <div class="col-10 py-3 px-2 d-flex align-items-center"><button class="btn btn-large btncontacto"><a href="tel:+34 637 016 042" class="text-decoration-none">+34 637 016 042</a></button></div>
     </div>
     <div class="row justify-content-center w-100 g-0 m-0 p-0">
         <div class="col-2 text-end py-3 px-2"><i class="bi bi-envelope opcion-menu"></i></div>
-        <div class="col-10 py-3 px-2 d-flex align-items-center"><button class="btn btn-large btncontacto"><a href="mailto:correocontacto@stolpersteine.com" class="text-decoration-none">correocontacto@stolpersteine.com</a></button></div>
+        <div class="col-10 py-3 px-2 d-flex align-items-center"><button class="btn btn-large btncontacto"><a href="mailto:stolpersteine.cordoba@gmail.com" class="text-decoration-none">stolpersteine.cordoba@gmail.com</a></button></div>
     </div>
     <div class="row justify-content-center w-100 g-0 m-0 p-0">
         <div class="col-2 text-end py-3 px-2"><i class="bi bi-facebook opcion-menu"></i></div>
