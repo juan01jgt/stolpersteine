@@ -22,7 +22,7 @@
                 <li><b>Promocionar</b> ante las diferentes Administraciones Públicas de todo tipo de actividades encaminadas a la consecución de los fines de la Asociación.</li>
                 <li>Y en general, llevar a cabo todas aquellas actividades encaminadas a la consecución de sus fines.</li>
             </ul>
-            <a href="{{ url("/static/pdfs/masinformacion.pdf") }}"><h3>Leer Mas...</h3></a>
+            <a href="https://drive.google.com/file/d/1l747kJkkJ6lehmuHTrxB_E_RcxbccRT7/view?usp=sharing"><h3>Leer Mas...</h3></a>
         </div>
     </div>
 
