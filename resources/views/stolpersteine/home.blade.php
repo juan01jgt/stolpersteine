@@ -15,7 +15,7 @@
         @endif
 
         @forelse ($stolpersteines as $stolpersteine)
-        <div class="row m-0 my-2 p-1 mostrardatos rounded shadow border border-info" data-id_mostrar={{ $stolpersteine->id }}>
+        <div class="row m-0 my-3 p-1 py-3 mostrardatos rounded shadow cajastolpersteine" data-id_mostrar={{ $stolpersteine->id }}>
             <div class="col-4"><img src="{{ url('public/fotos/'.$stolpersteine->foto) }}" style="height: 100px;"></div>
             <div class="col-8 datosbuscador"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div>
         </div>

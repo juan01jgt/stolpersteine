@@ -33,6 +33,9 @@
             background-color: #b6923e;
             cursor: pointer;
         }
+        .cajastolpersteine{
+            background-color: #f5b31e
+        }
 
     </style>
     <meta charset="utf-8">
