@@ -98,7 +98,6 @@
                     e.latitude=urlParams.get('latitude');
                     e.longitude=urlParams.get('longitude');
                 }
-                console.log(e);
                 const marker = L.marker([e.latitude, e.longitude]).bindPopup(
                 "Estas aqui"
                 );
@@ -114,7 +113,16 @@
                 map.addLayer(circle);
             })
             .on("locationerror", (e) => {
+                if(urlParams.get('latitude') !== null && urlParams.get('longitude') !== null){
+                    e.latitude=urlParams.get('latitude');
+                    e.longitude=urlParams.get('longitude');
 
+                    const marker = L.marker([e.latitude, e.longitude]).bindPopup(
+                    "Estas aqui"
+                    );
+                    
+                    map.addLayer(marker);
+                }
             });
     </script>
     <script>
