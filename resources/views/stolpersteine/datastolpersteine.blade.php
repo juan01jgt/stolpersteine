@@ -11,7 +11,7 @@
             <div class="col-12 text-center"><h5>{{ $stolpersteines->f_nacimiento }} - {{ $stolpersteines->f_defuncion }}</h5></div>
             <hr>
             <div class="col-12 m-1" id="biografia"></div>
-            @if ($imagenes !== null)
+            @if (count($imagenes) > 0)
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner borde">
                   @forelse ($imagenes as $imagen)
@@ -34,10 +34,10 @@
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
-              @else
-                <hr>
-              @endif
-            <div class="col-12 m-1" id="Descripcion"></div>
+            @else
+              <hr>
+            @endif
+          <div class="col-12 m-1" id="Descripcion"></div>
         </div>
         @else
         <div class="row m-0">
