@@ -76,7 +76,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="foto" class="form-label"><h4>Ubicacion en el mapa (Utilizar buscador, Ej: 24 quevedo Villanueva de cordoba)</h4></label>
+                <label for="foto" class="form-label"><h4>Ubicacion en el mapa</h4></label>
                 <div id="map"></div>
                 <input type="number" id="lat" name="lat" class="form-control" placeholder="Latitud" style="display: none;"> 
                 <input type="number" id="lon" name="lon" class="form-control" placeholder="Longitud" style="display: none;">
@@ -128,6 +128,25 @@
                 results.addLayer(L.marker(data.results[i].latlng));
             }
         });
+
+        map.on("click", addMarker);
+
+        function addMarker(e) {
+            results.clearLayers();
+            document.getElementById('lat').setAttribute('value', e.latlng.lat );
+            document.getElementById('lon').setAttribute('value', e.latlng.lng );
+
+            const marker = new L.marker(e.latlng, {
+                draggable: true,
+            });
+            results.addLayer(marker);
+            marker.on("dragend", dragedMaker);
+        }
+        function dragedMaker() {
+
+            document.getElementById('lat').setAttribute('value', this.getLatLng().lat );
+            document.getElementById('lon').setAttribute('value', this.getLatLng().lng );
+        }
         
         CKEDITOR.replace( 'biografia' );
         CKEDITOR.replace( 'Descripcion' );
