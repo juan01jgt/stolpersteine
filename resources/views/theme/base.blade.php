@@ -2,6 +2,10 @@
 <html lang="es">
   <head>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         .opcion-menu{
             color: #00C2CA !important; 
             font-size: 2rem;
@@ -14,7 +18,7 @@
             background-color: #FFCC57;
         }
         #map { 
-            height: 81vh;
+            height: 76vh;
         }
         .leaflet-popup-content-wrapper{
             background-color: #FFCC57 !important;

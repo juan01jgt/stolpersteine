@@ -3,9 +3,9 @@
 @section('content')
     <div class="row m-0 fixed top"><div id="map"></div></div>
     <div class="container text-center pb-2">
-        <div class="row m-0 "><i class="bi bi-caret-up-fill opcion-menu"></i></div>
-        <form class="d-flex input-group w-auto">
-            <input type="search" class="form-control rounded" placeholder="Buscar nombre o localidad" aria-label="search" aria-describedby="search-addon" onkeyup="buscar()" id="buscador"/>
+        <div class="row m-0 "><i class="bi bi-caret-up-fill opcion-menu" onclick="hacerscroll()"></i></div>
+        <form class="d-flex input-group w-auto" onsubmit="document.getElementById('buscador').blur(); return false" id="formbuscador">
+            <input type="search" class="form-control rounded" placeholder="Buscar nombre o localidad" onkeyup="buscar()" id="buscador" onclick="hacerscroll()"/>
         </form>
 
         @if (Session::has('mensaje'))
@@ -149,5 +149,16 @@
                 }
             }
         }
+
+        function hacerscroll(){
+            location.href='#formbuscador';
+            setTimeout(function(){
+                location.href='#buscador';
+            }, 1000);
+        }
+        
+        document.getElementById("buscador").addEventListener("search", function(event) {
+            buscar();  
+        });
     </script>
 @endsection
