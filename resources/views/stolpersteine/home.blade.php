@@ -56,14 +56,18 @@
         maxZoom: 19
         }).addTo(map);
 
+        let puntos = L.markerClusterGroup();
+        let punto;
+
         @forelse ($stolpersteines as $stolpersteine)
-        L.marker([{{$stolpersteine->lat}}, {{$stolpersteine->lon}}],{icon: myIcon})
+        punto = L.marker([{{$stolpersteine->lat}}, {{$stolpersteine->lon}}],{icon: myIcon})
             .bindPopup('<div class="row no-gutters mostrardatos justify-content-between" onclick="aux({{ $stolpersteine->id }})"><div class="col-4"><img src="{{ url("public/fotos/".$stolpersteine->foto) }}" style="height: 100px;"></div><div class="col-7"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div></div>')
-            .openPopup()
-            .addTo(map);
+            .openPopup();
+            puntos.addLayer(punto);
         @empty
         @endforelse
-        
+        map.addLayer(puntos);
+
         var searchControl = L.esri.Geocoding.geosearch({
             position: 'topright',
             placeholder: 'Buscar una direccion',

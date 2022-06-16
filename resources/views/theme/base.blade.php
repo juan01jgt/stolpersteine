@@ -27,7 +27,7 @@
             background-color: #FFCC57 !important;
         }
         .borde{
-            border: 3px solid #00C2CA;
+            border: 5px solid #00C2CA;
         }
         .btncontacto{
             background-color: #00C2CA !important; 
@@ -60,6 +60,10 @@
     <script src="https://unpkg.com/esri-leaflet@3.0.8/dist/esri-leaflet.js"
     integrity="sha512-E0DKVahIg0p1UHR2Kf9NX7x7TUewJb30mxkxEm2qOYTVJObgsAGpEol9F6iK6oefCbkJiA4/i6fnTHzM6H1kEA=="
     crossorigin=""></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
     <!-- Load Esri Leaflet Geocoder from CDN -->
     <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@3.1.3/dist/esri-leaflet-geocoder.css"
