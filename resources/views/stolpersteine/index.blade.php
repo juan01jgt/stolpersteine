@@ -26,8 +26,8 @@
                     <tr>
                         <td>{{ $stolpersteine->nombre }}</td>
                         <td>{{ $stolpersteine->localidad }}</td>
-                        <td>{{ $stolpersteine->f_nacimiento }}</td>
-                        <td>{{ $stolpersteine->f_defuncion }}</td>
+                        <td>{{ Str::substr($stolpersteine->f_nacimiento, 8, 2) }}/{{ Str::substr($stolpersteine->f_nacimiento, 5, 2) }}/{{ Str::substr($stolpersteine->f_nacimiento, 0, 4) }}</td>
+                        <td>{{ Str::substr($stolpersteine->f_defuncion, 8, 2) }}/{{ Str::substr($stolpersteine->f_defuncion, 5, 2) }}/{{ Str::substr($stolpersteine->f_defuncion, 0, 4) }}</td>
                         <td><img src="{{ url('public/fotos/'.$stolpersteine->foto) }}" style="height: 100px;"></td>
                         <td>
                             <a href="{{ route('stolpersteine.edit', $stolpersteine) }}" class="btn btn-warning">Editar</a>

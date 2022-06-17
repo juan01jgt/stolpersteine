@@ -129,6 +129,7 @@ class StolpersteineController extends Controller
      */
     public function update(Request $request, Stolpersteine $stolpersteine)
     {
+        $filename='';
         if($request->file('foto')){
             $file= $request->file('foto');
             $filename= date('YmdHi').$file->getClientOriginalName();
@@ -152,7 +153,7 @@ class StolpersteineController extends Controller
         $stolpersteine->f_defuncion = $request['f_defuncion'];
         $stolpersteine->biografia = $request['biografia'];
         $stolpersteine->Descripcion = $request['Descripcion'];
-        $stolpersteine->foto = $request['foto'];
+        $stolpersteine->foto = $filename;
         $stolpersteine->lat = $request['lat'];
         $stolpersteine->lon = $request['lon'];
         $stolpersteine->save();

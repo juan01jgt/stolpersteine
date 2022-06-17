@@ -1,8 +1,9 @@
 @extends('theme.base')
 
 @section('content')
-    <div class="row m-0 fixed top"><div id="map"></div></div>
-    <div class="container text-center pb-2">
+    <div id="map" style="width: 100%;position: fixed;"></div>
+    <div style="height: 76vh;width: 100%;"></div>
+    <div class="container text-center pb-2" style="z-index: 2;position: absolute; background-color: #FFD43B;">
         <div class="row m-0 "><i class="bi bi-caret-up-fill opcion-menu" onclick="hacerscroll()"></i></div>
         <form class="d-flex input-group w-auto" onsubmit="document.getElementById('buscador').blur(); return false" id="formbuscador">
             <input type="search" class="form-control rounded" placeholder="Buscar nombre o localidad" onkeyup="buscar()" id="buscador" onclick="hacerscroll()"/>
@@ -25,6 +26,7 @@
         </div>
         @endforelse
         
+        <div style="height: 4rem"></div>
     </div>
     
     <nav class="navbar fixed-bottom navbar-expand navbar-dark p-0" style="background-color: #493620;">
@@ -41,7 +43,7 @@
         </div>
     </nav>
 
-    <div style="height: 4rem"></div>
+    
 
     <script>
         var myIcon = L.icon({

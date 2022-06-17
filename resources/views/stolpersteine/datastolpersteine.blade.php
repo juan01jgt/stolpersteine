@@ -8,7 +8,10 @@
         <div class="row m-0" data-id_mostrar={{ $stolpersteines->id }}>
             <div class="col-12 text-center"><img src="{{ url('public/fotos/'.$stolpersteines->foto) }}" class="w-100" onload="cargar('{{ $stolpersteines->biografia }}','{{ $stolpersteines->Descripcion }}')"></div>
             <div class="col-12 text-center"><h1><b>{{ $stolpersteines->nombre }}</b></h1><h5>{{ $stolpersteines->localidad }}</h5></div>
-            <div class="col-12 text-center"><h5>{{ $stolpersteines->f_nacimiento }} - {{ $stolpersteines->f_defuncion }}</h5></div>
+            <div class="col-12 text-center">
+              <h5>{{ Str::substr($stolpersteines->f_nacimiento, 8, 2) }}/{{ Str::substr($stolpersteines->f_nacimiento, 5, 2) }}/{{ Str::substr($stolpersteines->f_nacimiento, 0, 4) }} - 
+                {{ Str::substr($stolpersteines->f_defuncion, 8, 2) }}/{{ Str::substr($stolpersteines->f_defuncion, 5, 2) }}/{{ Str::substr($stolpersteines->f_defuncion, 0, 4) }}</h5>
+            </div>
             <hr>
             <div class="col-12 m-1" id="biografia"></div>
             @if (count($imagenes) > 0)
@@ -17,8 +20,8 @@
                   @forelse ($imagenes as $imagen)
                   <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                     <img src="{{ url('public/fotos/'.$imagen->nombre) }}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>{{ $imagen->descripcion }}</h5>
+                    <div class="carousel-caption d-block">
+                      <h5 style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">{{ $imagen->descripcion }}</h5>
                     </div>
                   </div>
                   @empty
