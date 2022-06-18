@@ -63,7 +63,7 @@
 
         @forelse ($stolpersteines as $stolpersteine)
         punto = L.marker([{{$stolpersteine->lat}}, {{$stolpersteine->lon}}],{icon: myIcon})
-            .bindPopup('<div class="row no-gutters mostrardatos justify-content-between" onclick="aux({{ $stolpersteine->id }})"><div class="col-4"><img src="{{ url("public/fotos/".$stolpersteine->foto) }}" style="height: 100px;"></div><div class="col-7"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div></div>')
+            .bindPopup('<div class="row no-gutters mostrardatos justify-content-between" onclick="aux({{ $stolpersteine->id }})"><div class="col-5"><img src="{{ url("public/fotos/".$stolpersteine->foto) }}" style="width: 100%;"></div><div class="col-7"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div></div>')
             .openPopup();
             puntos.addLayer(punto);
         @empty
@@ -166,5 +166,19 @@
         document.getElementById("buscador").addEventListener("search", function(event) {
             buscar();  
         });
+
+        var ubi;
+        var ban=0;
+        function setLocation(latitud,longitud){
+            if(ban===1){
+                map.removeLayer(ubi);
+            }
+            ubi = L.marker([latitud, longitud]).bindPopup("Estas aqui");
+            map.addLayer(ubi);
+            if(ban===0){
+                map.setView([latitud, longitud], 12);
+            }
+            ban=1;
+        }
     </script>
 @endsection
