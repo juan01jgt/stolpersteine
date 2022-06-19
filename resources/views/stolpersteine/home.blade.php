@@ -3,7 +3,7 @@
 @section('content')
     <div id="map" style="width: 100%;position: fixed;"></div>
     <div style="height: 76vh;width: 100%;"></div>
-    <div class="container text-center pb-2" style="z-index: 2;position: absolute; background-color: #FFD43B;">
+    <div class="container text-center pb-2" style="z-index: 2;position: absolute; background-color: #FFD43B; max-width: none;">
         <div class="row m-0 "><i class="bi bi-caret-up-fill opcion-menu" onclick="hacerscroll()"></i></div>
         <form class="d-flex input-group w-auto" onsubmit="document.getElementById('buscador').blur(); return false" id="formbuscador">
             <input type="search" class="form-control rounded" placeholder="Buscar nombre o localidad" onkeyup="buscar()" id="buscador" onclick="hacerscroll()"/>
@@ -26,7 +26,7 @@
         </div>
         @endforelse
         
-        <div style="height: 4rem"></div>
+        <div style="height: 4rem" id="piepagina"></div>
     </div>
     
     <nav class="navbar fixed-bottom navbar-expand navbar-dark p-0" style="background-color: #493620;">
@@ -179,6 +179,17 @@
                 map.setView([latitud, longitud], 12);
             }
             ban=1;
+        }
+
+        window.onload = cargacompleta;
+
+        function cargacompleta(){
+            setTimeout(function(){
+                location.href='#piepagina';
+            }, 1000);
+            setTimeout(function(){
+                location.href='#map';
+            }, 2000);
         }
     </script>
 @endsection
