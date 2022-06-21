@@ -87,9 +87,8 @@
 
         searchControl.on('results', function (data) {
             results.clearLayers();
-            for (var i = data.results.length - 1; i >= 0; i--) {
-            results.addLayer(L.marker(data.results[i].latlng));
-            }
+            results.addLayer(L.marker(data.results[0].latlng));
+            map.setView(data.results[0].latlng, 15);
         });
         
         const queryString = window.location.search;
@@ -167,13 +166,18 @@
             buscar();  
         });
 
+        var iconoubi = L.icon({
+            iconUrl: '/static/images/iconoubi.png',
+            iconSize: [45, 47],
+            iconAnchor: [23, 47],
+        });
         var ubi;
         var ban=0;
         function setLocation(latitud,longitud){
             if(ban===1){
                 map.removeLayer(ubi);
             }
-            ubi = L.marker([latitud, longitud]).bindPopup("Estas aqui");
+            ubi = L.marker([latitud, longitud],{icon: iconoubi}).bindPopup("Estas aqui");
             map.addLayer(ubi);
             if(ban===0){
                 map.setView([latitud, longitud], 12);
