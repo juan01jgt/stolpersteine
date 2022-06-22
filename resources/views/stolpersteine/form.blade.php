@@ -67,6 +67,9 @@
                 @enderror
             </div>
 
+            @if (isset($stolpersteine))
+            <img src="{{ url('public/fotos/'.$stolpersteine->foto) }}" style="height: 100px; display:none;" onload="ubiant({{$stolpersteine->lat}},{{$stolpersteine->lon}})">
+            @else
             <div class="mb-3">
                 <label for="foto" class="form-label"><h4>Foto principal</h4></label>
                 <input type="file" name="foto" class="form-control" >
@@ -74,12 +77,13 @@
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
             </div>
+            @endif
 
             <div class="mb-3">
                 <label for="foto" class="form-label"><h4>Ubicacion en el mapa</h4></label>
                 <div id="map"></div>
-                <input type="number" id="lat" name="lat" class="form-control" placeholder="Latitud" style="display: none;"> 
-                <input type="number" id="lon" name="lon" class="form-control" placeholder="Longitud" style="display: none;">
+                <input type="number" id="lat" name="lat" class="form-control" placeholder="Latitud" style="display: none;" value="{{ old('lat') ?? @$stolpersteine->lat}}"> 
+                <input type="number" id="lon" name="lon" class="form-control" placeholder="Longitud" style="display: none;" value="{{ old('lon') ?? @$stolpersteine->lon}}">
                 @error('lat')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
@@ -98,7 +102,7 @@
         </form>
     </div>
     <script>
-        
+
         var map = L.map('map').setView([37.890056, -4.778513], 10);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
@@ -151,5 +155,15 @@
         CKEDITOR.replace( 'biografia' );
         CKEDITOR.replace( 'Descripcion' );
         
+        function ubiant(latant,lonant) {
+            if (latant) {
+                const marker = new L.marker([latant,lonant], {
+                    draggable: true,
+                });
+                results.addLayer(marker);
+                marker.on("dragend", dragedMaker);
+            }
+        }
+
     </script>
 @endsection

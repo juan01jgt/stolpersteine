@@ -4,6 +4,7 @@
     <div class="container text-center">
         <h1>Listado de Stolpersteines</h1>
         <a href="{{ route('stolpersteine.create')}}" class="btn btn-primary">Crear  Stolpersteine</a>
+        <a href="/" class="btn btn-primary">Volver al Inicio</a>
 
         @if (Session::has('mensaje'))
             <div class="alert alert-info my-5">
