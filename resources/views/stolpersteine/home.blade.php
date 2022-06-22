@@ -64,11 +64,15 @@
         @forelse ($stolpersteines as $stolpersteine)
         punto = L.marker([{{$stolpersteine->lat}}, {{$stolpersteine->lon}}],{icon: myIcon})
             .bindPopup('<div class="row no-gutters mostrardatos justify-content-between" onclick="aux({{ $stolpersteine->id }})"><div class="col-5"><img src="{{ url("public/fotos/".$stolpersteine->foto) }}" style="width: 100%;"></div><div class="col-7"><b>{{ $stolpersteine->nombre }}</b> <br> {{ $stolpersteine->localidad }}</div></div>')
-            .openPopup();
+            .openPopup().on('click', clickZoom);
             puntos.addLayer(punto);
         @empty
         @endforelse
         map.addLayer(puntos);
+
+        function clickZoom(e) {
+            map.setView(e.target.getLatLng());
+        }
 
         var searchControl = L.esri.Geocoding.geosearch({
             position: 'topright',
