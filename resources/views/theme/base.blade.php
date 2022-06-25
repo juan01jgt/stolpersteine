@@ -40,6 +40,9 @@
         .cajastolpersteine{
             background-color: #f5b31e
         }
+        .colorenlace{
+            color: #0b397c
+        }
 
     </style>
     <meta charset="utf-8">
