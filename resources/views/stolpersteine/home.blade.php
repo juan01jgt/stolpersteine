@@ -188,16 +188,5 @@
             }
             ban=1;
         }
-
-        window.onload = cargacompleta;
-
-        function cargacompleta(){
-            setTimeout(function(){
-                location.href='#piepagina';
-            }, 1000);
-            setTimeout(function(){
-                location.href='#map';
-            }, 2000);
-        }
     </script>
 @endsection
